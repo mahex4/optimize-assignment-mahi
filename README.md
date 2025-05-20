@@ -27,13 +27,9 @@ Please submit a GitHub repo or ZIP file with:
 
 ### Where/What/Why Format Example:
 
-1. **Where**: `src/components/UserFilter.tsx`
-   **What**: Implemented React.memo for UserFilter component
-   **Why**: To prevent unnecessary re-renders when parent component updates but filter props haven't changed
-
-2. **Where**: `src/pages/blog/[slug].tsx`
+1. **Where**: `src/pages/blog/[slug].tsx`
    **What**: Added dynamic imports for blog content
    **Why**: To reduce initial bundle size and improve First Contentful Paint (FCP)
-   =
+   **Reference**: Documentation URL (optional)
 
 ---
