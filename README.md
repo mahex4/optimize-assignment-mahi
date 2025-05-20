@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Frontend Assignment: Landing site Optimization
 
-## Getting Started
+## Task
 
-First, run the development server:
+You're given a simple landing website. Written in Next.js, using TypeScript.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The website has:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- landing page
+- demo page
+- blog
+- gallery
+- pricing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Your task is to **optimize performance and fix any issues you find** while preserving the functionality. You are free to identify any bugs through out the project and apply any optimizations you see fit
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Submission
 
-To learn more about Next.js, take a look at the following resources:
+Please submit a GitHub repo or ZIP file with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Your updated working code (npm install; npm run build; npm start)
+- An accompanying PDF file explaining all the changes you did in Where/What/Why format
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📝 Example of Changes Documentation
 
-## Deploy on Vercel
+### Where/What/Why Format Example:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. **Where**: `src/components/UserFilter.tsx`
+   **What**: Implemented React.memo for UserFilter component
+   **Why**: To prevent unnecessary re-renders when parent component updates but filter props haven't changed
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Where**: `src/pages/blog/[slug].tsx`
+   **What**: Added dynamic imports for blog content
+   **Why**: To reduce initial bundle size and improve First Contentful Paint (FCP)
+   =
+
+---
