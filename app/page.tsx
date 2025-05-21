@@ -1,7 +1,6 @@
 import Hero from "./components/Hero";
 import Features from "./components/Features";
-import Gallery from "./components/Gallery";
-import FontShowcase from "./components/FontShowcase";
+import dynamic from "next/dynamic";
 
 const features = [
   {
@@ -21,13 +20,21 @@ const features = [
   },
 ];
 
+const DynamicFontShowcase = dynamic(() => import("./components/FontShowcase"), {
+  loading: () => <p>loading...</p>
+})
+
+const DynamicGallery = dynamic(() => import("./components/Gallery"),{
+  loading: () => <p>loading....</p>
+})
+
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Hero />
       <Features features={features} />
-      <FontShowcase />
-      <Gallery />
+      <DynamicFontShowcase />
+      <DynamicGallery />
     </div>
   );
 }

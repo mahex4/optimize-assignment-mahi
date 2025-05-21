@@ -9,9 +9,10 @@ export default function Hero() {
         loop
         muted
         playsInline
+        preload="none"
         className="absolute top-0 left-0 w-full h-full object-cover"
       >
-        <source src="/2.mp4" type="video/mp4" />
+        <source src="/7670835-uhd_3840_2160_30fps.mp4" type="video/mp4" />
       </video>
 
       {/* Overlay */}
