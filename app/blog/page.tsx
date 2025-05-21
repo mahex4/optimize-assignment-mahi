@@ -1,5 +1,10 @@
+import dynamic from "next/dynamic";
 import BlogPostCard from "../components/BlogPostCard";
 import Newsletter from "../components/Newsletter";
+
+const DynamicBlogPostCard = dynamic(() => import("../components/BlogPostCard"), {
+  loading: () => <p>loading....</p>
+})
 
 export default function Blog() {
   return (
