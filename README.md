@@ -16,20 +16,22 @@ Your task is to **optimize performance and fix any issues you find** while prese
 
 ---
 
-## 🚀 Submission
+## Submission
 
 Please submit a GitHub repo or ZIP file with:
 
 - Your updated working code (npm install; npm run build; npm start)
-- An accompanying PDF file explaining all the changes you did in Where/What/Why format
+- An accompanying PDF file or readme explaining all the changes you did in Where/What/Why format
 
-## 📝 Example of Changes Documentation
+**[Bonus]** Deploy the site to a free platform (e.g., Netlify, Vercel, Render) and share the live link.
+
+## Example of Changes Documentation
 
 ### Where/What/Why Format Example:
 
 1. **Where**: `src/pages/blog/[slug].tsx`
-   **What**: Added dynamic imports for blog content
-   **Why**: To reduce initial bundle size and improve First Contentful Paint (FCP)
-   **Reference**: Documentation URL (optional)
+2. **What**: Added dynamic imports for blog content
+3. **Why**: To reduce initial bundle size and improve First Contentful Paint (FCP)
+4. **Reference**: Documentation URL (optional)
 
 ---
