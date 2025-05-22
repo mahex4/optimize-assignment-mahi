@@ -1,19 +1,6 @@
-import dynamic from "next/dynamic";
 import Newsletter from "../components/Newsletter";
 import { blogPosts } from "./constants";
-import Skeleton from "../components/Skeleton";
-
-const DynamicBlogPostCard = dynamic(() => import("../components/BlogPostCard"), {
-  loading: () => <BlogPostCardSkeleton />
-})
-
-const BlogPostCardSkeleton = () => {
-  return (<article className="relative border-white/20 border dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden">
-    <div className="relative w-full h-full overflow-hidden aspect-square">
-      <Skeleton className="object-cover" />
-    </div>
-  </article>)
-}
+import BlogPostCard from "../components/BlogPostCard";
 
 export default function Blog() {
   return (
@@ -26,7 +13,7 @@ export default function Blog() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.map((post, index) => (
-            <DynamicBlogPostCard key={index} post={post} />
+            <BlogPostCard key={index} post={post} />
           ))}
         </div>
 
