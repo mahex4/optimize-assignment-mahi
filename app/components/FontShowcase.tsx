@@ -60,6 +60,11 @@ const fonts: FontData[] = [
     className: "Montserrat",
   },
   {
+    name: "Mukta",
+    text: "AI Art Generator",
+    className: "Mukta",
+  },
+  {
     name: "Open Sans",
     text: "AI Art Generator",
     className: "Open_Sans",

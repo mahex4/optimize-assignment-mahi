@@ -7,9 +7,8 @@ export interface FontData {
     className: string,
 }
 
-const FontCard: FC<FontData> = ({ name, text, className }) => {
+const FontCard: FC<FontData> = ({ name, text }) => {
     const selectFont = fontMap[name]
-
     return (
         <div
             className="bg-white dark:bg-gray-700 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow"

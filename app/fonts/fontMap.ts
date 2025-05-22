@@ -1,4 +1,3 @@
-// app/fonts/fontMap.ts
 import { NextFont } from "next/dist/compiled/@next/font";
 import {
   Anton,
@@ -36,6 +35,7 @@ import {
   Space_Mono,
   Ubuntu,
   Work_Sans,
+  Mukta,
 } from "next/font/google";
 
 const anton = Anton({ weight: "400", subsets: ["latin"] });
@@ -55,6 +55,7 @@ const lato = Lato({ weight: "400", subsets: ["latin"] });
 const libreBaskerville = Libre_Baskerville({ weight: "400", subsets: ["latin"] });
 const lobster = Lobster({ weight: "400", subsets: ["latin"] });
 const montserrat = Montserrat({ weight: "400", subsets: ["latin"] });
+const mukta = Mukta({ weight: "400", subsets: ["latin"] });
 const openSans = Open_Sans({ weight: "400", subsets: ["latin"] });
 const oswald = Oswald({ weight: "400", subsets: ["latin"] });
 const pacifico = Pacifico({ weight: "400", subsets: ["latin"] });
@@ -96,6 +97,7 @@ export const fontMap: FontMap = {
   "Libre Baskerville": libreBaskerville,
   "Lobster": lobster,
   "Montserrat": montserrat,
+  "Mukta": mukta,
   "Open Sans": openSans,
   "Oswald": oswald,
   "Pacifico": pacifico,
