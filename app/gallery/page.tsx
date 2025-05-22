@@ -1,7 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { useEffect, useState } from "react";
 import { createClient } from "pexels";
 
 interface Photo {
@@ -14,75 +11,42 @@ interface Photo {
   photographerUrl: string;
 }
 
-export default function Gallery() {
-  const [photos, setPhotos] = useState<Photo[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+async function fetchPhotos(): Promise<Photo[]> {
+  const client = createClient(process.env.NEXT_PUBLIC_PEXEL_KEY || "");
+  const response = await client.photos.search({
+    query: "ai generated art",
+    per_page: 20,
+  });
 
-  useEffect(() => {
-    const fetchPhotos = async () => {
-      console.log(
-        "fetching photos with API key",
-        process.env.NEXT_PUBLIC_PEXELS_API_KEY
-      );
-      try {
-        const client = createClient(
-          process.env.NEXT_PUBLIC_PEXELS_API_KEY || ""
-        );
-        const response = await client.photos.search({
-          query: "ai generated art",
-          per_page: 80,
-        });
-
-        if ("error" in response) {
-          throw new Error(response.error);
-        }
-
-        const formattedPhotos = response.photos.map((photo) => ({
-          id: photo.id,
-          title: photo.alt || "Untitled",
-          description: photo.alt || "No description available",
-          image: photo.src.large2x,
-          tags: ["Abstract", "Digital", "Art"],
-          photographer: photo.photographer,
-          photographerUrl: photo.photographer_url,
-        }));
-
-        setPhotos(formattedPhotos);
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "An error occurred");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPhotos();
-  }, []);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 flex items-center justify-center">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600 dark:text-gray-300">
-            Loading gallery...
-          </p>
-        </div>
-      </div>
-    );
+  if ("error" in response) {
+    throw new Error(response.error);
   }
 
-  if (error) {
+  return response.photos.map((photo) => ({
+    id: photo.id,
+    title: photo.alt || "Untitled",
+    description: photo.alt || "No description available",
+    image: photo.src.large2x,
+    tags: ["Abstract", "Digital", "Art"],
+    photographer: photo.photographer,
+    photographerUrl: photo.photographer_url,
+  }));
+}
+
+export const revalidate = 3600; // I have kept a revalidation period of an hour
+
+export default async function GalleryPage() {
+  let photos: Photo[] = [];
+
+  try {
+    photos = await fetchPhotos();
+  } catch (error) {
     return (
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 flex items-center justify-center">
         <div className="text-center">
-          <p className="text-red-500 mb-4">Error: {error}</p>
-          <button
-            onClick={() => window.location.reload()}
-            className="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
-          >
-            Try Again
-          </button>
+          <p className="text-red-500 mb-4">
+            {(error as Error).message || "Failed to load gallery"}
+          </p>
         </div>
       </div>
     );
@@ -103,14 +67,16 @@ export default function Gallery() {
               className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-105"
             >
               <div className="relative aspect-square">
-                <img
+                <Image
+                  fill
                   src={photo.image}
                   className="object-cover"
+                  alt={`Image of ${photo.title} by ${photo.photographer}`}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">{photo.title}</h3>
+                <h1 className="text-xl font-semibold mb-2">{photo.title}</h1>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
                   {photo.description}
                 </p>

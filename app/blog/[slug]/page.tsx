@@ -8,10 +8,30 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function BlogPost({ params }: { params: { slug: string } }) {
-  const post = blogPosts.find(
-    (post) => post.link === `/blog/${params.slug}`
-  );
+export async function generateMetadata({ params }: { params: { slug: string } }) {
+  const post = blogPosts.find((post) => post.link === `/blog/${params.slug}`);
+
+  if (!post) return {};
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+    },
+  };
+}
+
+export default async function BlogPost({ params }: { params: { slug: string } }) {
+  const post = blogPosts.find((post) => post.link === `/blog/${params.slug}`);
 
   if (!post) return notFound();
 

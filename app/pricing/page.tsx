@@ -11,10 +11,10 @@ export default function Pricing() {
           Choose the plan that's right for you
         </p>
 
-        <div className="flex overflow-hidden gap-8 max-w-5xl mx-auto">
+        <div className="flex overflow-scroll p-4 overflow-y-auto gap-8 max-w-5xl mx-auto">
           {plans.map((plan) => (
             <div
-              className="min-w-[250px] bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 flex flex-col"
+              className="min-w-[300px] bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 flex flex-col"
               key={"key"}
             >
               <h2 className="text-2xl font-bold mb-4">{plan.name}</h2>

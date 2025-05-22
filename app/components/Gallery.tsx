@@ -11,7 +11,7 @@ export default function Gallery() {
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((num) => (
             <div
               key={num}
-              className="relative aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow"
+              className="relative w-full aspect-square overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow"
             >
               <Image
                 fill

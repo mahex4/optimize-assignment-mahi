@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     "creative tools",
     "AI generator",
   ],
+  metadataBase: new URL('https://optimize-assignment-mahi.vercel.app'),
 };
 
 export default function RootLayout({
