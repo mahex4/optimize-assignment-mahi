@@ -9,7 +9,7 @@ export default function Newsletter() {
         <input
           type="email"
           placeholder="Enter your email"
-          className="flex-1 px-4 py-2 rounded-lg border focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+          className="flex-1 px-4 py-2 placeholder-neutral-600 text-black rounded-lg border focus:ring-2 focus:ring-purple-500 focus:border-transparent"
         />
         <button
           type="submit"
