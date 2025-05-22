@@ -10,8 +10,8 @@ const PhotoCardSkeleton = () => {
             <Skeleton />
         </div>
         <div className="p-6">
-            <h1 className="text-xl font-semibold mb-2">Photos Incoming</h1>
-            <p className="text-gray-600 dark:text-gray-300 mb-4">
+            <h1 className="text-xl font-semibold min-h-[4.75rem] mb-2">Photos Incoming</h1>
+            <p className="text-gray-600 min-h-[5rem] dark:text-gray-300 mb-4">
                 Loading your Photo
             </p>
         </div>
